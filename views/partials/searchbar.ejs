@@ -1,0 +1,37 @@
+<div class="searchbar-container d-flex">
+    <form class=" searchbar-form d-flex" method='post'>
+        <input name="search_value" class=" mysearchbar form-control me-5" type="search" placeholder="Search" aria-label="Search">
+        <input type="hidden" name="topic_name" value="<%= topic %>">
+        <div class="form-group tags_or_title">
+          <select class="form-control" name="based_on" id="filter_based_on">
+            <option value="title">Based on Title</option>
+            <option value="tags">Based on Tags </option>
+          </select>
+        </div>
+
+        <div class="form-group myfilterdropdown <%= page=="bookmarks"?"dontshow":"" %>">
+            <select name="filter_option" class="myselect form-control" id="filterSelect">
+              <option value="newest first">Newest First </option>
+              <option value="oldest first">Oldest First</option>
+              <option value="most liked">Most Liked First</option>
+            </select>
+        </div>
+
+        <div  class="form-group topic_choose <%= page=="posts"?"dontshow":"" %>">
+          <select class="topic_choose_select" name="choose_topic">
+            <option value="">Choose a topic</option>
+            <option value="health">HEALTH</option>
+            <option value="sports">SPORTS</option>
+            <option value="education">EDUCATION</option>
+            <option value="news_updates">NEWS UPDATES</option>
+            <option value="lifestyle">LIFESTYLE</option>
+            <option value="entertainment">ENTERTAINMENT</option>
+          </select>
+        </div>
+
+        <button class="searchbar_btn btn btn-outline-success" type="submit">Search</button>
+
+
+    </form>
+</div>
+

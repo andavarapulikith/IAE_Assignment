@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All articles</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/all_articles.css">
+<script src="https://kit.fontawesome.com/3e893105a3.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs/dist/purecounter_vanilla.js"></script>
+    <link rel="stylesheet" href="/css/searchbar.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
+<link
+      href="/css/admin.css"
+      rel="stylesheet"
+    />
+</head>
+
+<body>
+
+    <%- include('partials/adminnavbar') %>
+
+
+    <div class="right">
+    <div class="heading">
+    <h2>All articles</h2>
+    </div>
+
+    <%- include('partials/searchbar') %>
+
+      <div class="allcards">
+        <% if(articles.length!==0) {%>
+         <% for(let i=0;i<articles.length;i++) {%>
+            <a href="/posts/<%= articles[i]._id %>">
+        <div class="singlecard">
+
+            <div class="image">
+            <img src="<%=articles[i].image_link %>" alt="">
+            </div>
+
+            <div class="content">
+                <div class="titler">
+                    <div class="title"><%= articles[i].title.substring(0,50)  %>...</div>
+                    <div class="topicsss"><%=articles[i].topic %></div>
+                </div>
+                <div class="tags">
+                    <% for(let j=0;j<Math.min(articles[i].tags.length,3);j++) {%>
+                    <div class="ettag"><%=articles[i].tags[j] %></div>
+                <!-- <div class="tag">jerkierjre</div> -->
+                <!-- <div class="tag">eiertreutrehtreujhtretre ...</div> -->
+                <!-- <div class="tag">jreierioreeirtnykyjiyrtuytreo</div> -->
+                <% } %>
+                </div>
+
+            </div>
+
+
+        <div class="writer">
+           -- <%= articles[i].author_name %>
+           <div class="deletion">
+
+            <a href="javascript:void(0)"  data-href="/expert_articles/delete/<%=articles[i]._id %>" style="text-decoration: none;color: white;margin-left: 0;" class="delete_article"><button class="delete">DELETE</button></a>
+        </div>
+         </div>
+
+        </div>
+    </a>
+        <% } %>
+        <%} %>
+        <% if(articles.length===0) { %>
+            <div class="not_available" style="height: 300px;text-align: center;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+          
+              <img src="../images/null.png" alt="">
+           </div>
+            <%} %>
+      </div>
+
+    </div>
+
+
+    <script src="../js/admin.js"></script>
+    <script src="../js/all_articles.js"></script>
+</body>
+
+</html>
